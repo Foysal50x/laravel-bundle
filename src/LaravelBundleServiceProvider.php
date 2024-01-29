@@ -2,9 +2,9 @@
 
 namespace Faisal50x\LaravelBundle;
 
+use Faisal50x\LaravelBundle\Commands\LaravelBundleCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Faisal50x\LaravelBundle\Commands\LaravelBundleCommand;
 
 class LaravelBundleServiceProvider extends PackageServiceProvider
 {

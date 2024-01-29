@@ -2,9 +2,9 @@
 
 namespace Faisal50x\LaravelBundle\Tests;
 
+use Faisal50x\LaravelBundle\LaravelBundleServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Faisal50x\LaravelBundle\LaravelBundleServiceProvider;
 
 class TestCase extends Orchestra
 {
