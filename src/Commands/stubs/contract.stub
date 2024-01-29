@@ -1,0 +1,10 @@
+<?php
+
+namespace {{namespace}};
+
+use Faisal50x\LaravelBundle\Contracts\RepositoryContract;
+
+interface {{ interface }} extends RepositoryContract
+{
+
+}
