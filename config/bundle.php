@@ -25,7 +25,7 @@ return [
              * Module source directory
              * default module/app/Repositories
              */
-            'src_dir'  => 'app'
+            'src_dir' => 'app',
         ],
     ],
 ];

@@ -14,7 +14,7 @@ trait HasModule
     protected function getDefaultNamespace($rootNamespace): string
     {
         $namespace = '';
-        if($this->option('module')) {
+        if ($this->option('module')) {
             $appDir = Str::studly($this->getModuleSrcPath());
             $namespace = $this->resolvedModuleNamespace($this->option('module'))."\\${appDir}\\";
         }
@@ -26,9 +26,10 @@ trait HasModule
 
     protected function rootNamespace(): string
     {
-        if($this->option('module')) {
+        if ($this->option('module')) {
             return Str::studly($this->getModulePath());
         }
+
         return parent::rootNamespace();
     }
 
@@ -46,12 +47,12 @@ trait HasModule
         return $dir.'/'.str_replace('\\', '/', ltrim($name, '\\')).'.php';
     }
 
-    protected function getModulePath():string
+    protected function getModulePath(): string
     {
         return trim(config('bundle.repository.modules.base_dir'), '\\');
     }
 
-    protected function getModuleSrcPath():string
+    protected function getModuleSrcPath(): string
     {
         return config('bundle.repository.modules.src_dir');
     }

@@ -8,17 +8,19 @@ use Illuminate\Contracts\Console\PromptsForMissingInput;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\text;
 
 class RepositoryMakeCommand extends GeneratorCommand implements PromptsForMissingInput
 {
     use HasModule;
+
     public $signature = 'make:repository {name} {--M|model} {--T|template=basic} {--module=}';
 
     public $description = 'Create a new Repository Class';
 
-    public function handle(): bool|null
+    public function handle(): ?bool
     {
 
         if (parent::handle() === false) {
@@ -37,7 +39,7 @@ class RepositoryMakeCommand extends GeneratorCommand implements PromptsForMissin
 
     protected function getRepositoryTemplate(): string
     {
-        return ucfirst(trim($this->option('template')))."Repository";
+        return ucfirst(trim($this->option('template'))).'Repository';
     }
 
     protected function createContract(): void
@@ -85,7 +87,7 @@ class RepositoryMakeCommand extends GeneratorCommand implements PromptsForMissin
             default: 'no'
         );
 
-        if($selectModuleOption === 'yes') {
+        if ($selectModuleOption === 'yes') {
             $module = text(
                 label: 'Which module do you want to choose?',
                 placeholder: 'E.g. Tenant/Auth',
