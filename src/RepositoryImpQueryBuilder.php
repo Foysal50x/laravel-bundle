@@ -20,11 +20,10 @@ abstract class RepositoryImpQueryBuilder extends BaseRepository
 
     protected array $defaultIncludes = [];
 
-
     /**
      * Find a record in the model by the specified id
      *
-     * @param int $id The id of the record to find
+     * @param  int  $id  The id of the record to find
      * @return Model The found record
      */
     public function find(int $id): Model
@@ -34,8 +33,6 @@ abstract class RepositoryImpQueryBuilder extends BaseRepository
 
     /**
      * Retrieve all records from the database.
-     *
-     * @return Collection
      */
     public function all(): Collection
     {
@@ -45,7 +42,7 @@ abstract class RepositoryImpQueryBuilder extends BaseRepository
     /**
      * Paginate the records from the database.
      *
-     * @param int $perPage The number of records to display per page.
+     * @param  int  $perPage  The number of records to display per page.
      * @return LengthAwarePaginator The paginated records.
      */
     public function paginate(int $perPage = 25): LengthAwarePaginator
@@ -53,15 +50,14 @@ abstract class RepositoryImpQueryBuilder extends BaseRepository
         return $this->newQueryBuilder()->paginate($perPage)->withQueryString();
     }
 
-
     /**
      * Create a new instance of the QueryBuilder.
      *
-     * @param array{allowedFilters?: array, allowedIncludes?: array, allowedSorts?: array} $options The options to configure the QueryBuilder [optional]
-     *        - allowedFilters (array): The allowed filters to apply on the query [optional]
-     *        - allowedIncludes (array): The allowed includes to load with the query [optional]
-     *        - allowedSorts (array): The allowed sorts to apply on the query [optional]
-     * @return QueryBuilder  The new instance of the QueryBuilder
+     * @param  array{allowedFilters?: array, allowedIncludes?: array, allowedSorts?: array}  $options  The options to configure the QueryBuilder [optional]
+     *                                                                                                 - allowedFilters (array): The allowed filters to apply on the query [optional]
+     *                                                                                                 - allowedIncludes (array): The allowed includes to load with the query [optional]
+     *                                                                                                 - allowedSorts (array): The allowed sorts to apply on the query [optional]
+     * @return QueryBuilder The new instance of the QueryBuilder
      */
     public function newQueryBuilder(array $options = []): QueryBuilder
     {
@@ -74,18 +70,13 @@ abstract class RepositoryImpQueryBuilder extends BaseRepository
             ->allowedSorts($allowedSorts)
             ->allowedFilters($allowedFilters)
             ->allowedIncludes($allowedIncludes)
-            ->when(count($this->defaultIncludes) > 0, fn($query) => $query->with($this->defaultIncludes));
+            ->when(count($this->defaultIncludes) > 0, fn ($query) => $query->with($this->defaultIncludes));
     }
 
     /**
      * Get the requested option value from the input array or return the default value if it does not exist or is empty.
-     *
-     * @param array $options
-     * @param string $optionKey
-     * @param array $default
-     * @return array
      */
-    private function getOptionOrDefault(array $options, string $optionKey, array $default):array
+    private function getOptionOrDefault(array $options, string $optionKey, array $default): array
     {
         return isset($options[$optionKey]) && count($options[$optionKey]) > 0 ? $options[$optionKey] : $default;
     }
@@ -102,11 +93,11 @@ abstract class RepositoryImpQueryBuilder extends BaseRepository
 
         $include = $request->get('include', '');
 
-        $includes = array_filter(explode(',', $include), fn($relation) => in_array($relation, $this->allowedIncludes));
+        $includes = array_filter(explode(',', $include), fn ($relation) => in_array($relation, $this->allowedIncludes));
 
         $include = trim(implode(',', $includes));
 
-        if (!$include) {
+        if (! $include) {
             $request->query->remove('include');
 
             return $request;
