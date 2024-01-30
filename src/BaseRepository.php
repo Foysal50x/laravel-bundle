@@ -25,7 +25,7 @@ abstract class BaseRepository implements RepositoryContract
 
     public function paginate(int $perPage = 15): LengthAwarePaginator
     {
-        // TODO: Implement paginate() method.
+        return $this->model->paginate($perPage)->withQueryString();
     }
 
     public function create(array $data): ?Model
