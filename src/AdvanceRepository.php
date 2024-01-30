@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Spatie\QueryBuilder\QueryBuilder;
 
-abstract class RepositoryImpQueryBuilder extends BaseRepository
+abstract class AdvanceRepository extends BasicRepository
 {
     protected array $defaultSorts = ['id'];
 

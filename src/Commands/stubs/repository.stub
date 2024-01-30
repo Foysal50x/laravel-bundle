@@ -1,0 +1,10 @@
+<?php declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Faisal50x\LaravelBundle\{{ Repository }} as BaseRepository;
+
+class {{ class }} extends BaseRepository
+{
+
+}

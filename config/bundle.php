@@ -4,20 +4,28 @@
 return [
     'repository' => [
         /**
-         * Define your repository path here
+         * Define your repository directory here
          * Default path is app/Repositories
-         *
-         * @example customs/Repositories
          */
-        'path' => 'Repositories',
+        'dir' => 'Repositories',
         /**
          * Define your repository contract path here
          * Default path is app/Repositories/Contracts
-         *
-         * @example customs/Contracts
          */
         'contract' => [
-            'path' => 'Contracts',
+            'dir' => 'Contracts',
+        ],
+        'modules' => [
+            /**
+             * module base direct
+             * default path is modules inside your project root directory
+             */
+            'base_dir' => 'modules',
+            /**
+             * Module source directory
+             * default module/app/Repositories
+             */
+            'src_dir'  => 'app'
         ],
     ],
 ];
