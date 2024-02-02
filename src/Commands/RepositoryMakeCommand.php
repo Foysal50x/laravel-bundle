@@ -35,9 +35,10 @@ class RepositoryMakeCommand extends GeneratorCommand implements PromptsForMissin
     protected function getNameInput(): string
     {
         $name = trim($this->argument('name'));
-        if(!Str::contains($name, "Repository")) {
-            $name .="Repository";
+        if (! Str::contains($name, 'Repository')) {
+            $name .= 'Repository';
         }
+
         return $name;
     }
 

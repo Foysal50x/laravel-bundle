@@ -5,12 +5,13 @@ namespace Faisal50x\LaravelBundle\Commands;
 use Faisal50x\LaravelBundle\Commands\Concerns\HasModule;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
-use RectorPrefix202401\Illuminate\Contracts\Console\PromptsForMissingInput;
 
 class RepositoryContractMakeCommand extends GeneratorCommand
 {
     use HasModule;
+
     protected $hidden = true;
+
     public $signature = 'make:repo-contract {name} {--module=}';
 
     public $description = 'Create a new Repository Contract';
@@ -23,9 +24,10 @@ class RepositoryContractMakeCommand extends GeneratorCommand
     protected function getNameInput(): string
     {
         $name = trim($this->argument('name'));
-        if(!Str::contains($name, "Contract")) {
-            $name .="Contract";
+        if (! Str::contains($name, 'Contract')) {
+            $name .= 'Contract';
         }
+
         return $name;
     }
 
@@ -42,8 +44,8 @@ class RepositoryContractMakeCommand extends GeneratorCommand
             $namespace = $this->resolvedModuleNamespace($this->option('module'))."\\${appDir}\\";
         }
 
-        $namespace .= str_replace('/', "\\",  trim(config('bundle.repository.dir', 'Repositories'), "/"))."\\";
-        $namespace .= str_replace('/', "\\", trim(config('bundle.repository.contract.dir', 'Contracts'), "/"));
+        $namespace .= str_replace('/', '\\', trim(config('bundle.repository.dir', 'Repositories'), '/')).'\\';
+        $namespace .= str_replace('/', '\\', trim(config('bundle.repository.contract.dir', 'Contracts'), '/'));
 
         return parent::getDefaultNamespace("{$rootNamespace}\\{$namespace}");
 

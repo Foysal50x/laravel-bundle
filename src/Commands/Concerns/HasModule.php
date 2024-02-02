@@ -19,7 +19,7 @@ trait HasModule
             $namespace = $this->resolvedModuleNamespace($this->option('module'))."\\${appDir}\\";
         }
 
-        $namespace .= str_replace('/', "\\",  trim(config('bundle.repository.dir', 'Repositories'), "/"));
+        $namespace .= str_replace('/', '\\', trim(config('bundle.repository.dir', 'Repositories'), '/'));
 
         return parent::getDefaultNamespace("{$rootNamespace}\\{$namespace}");
     }
