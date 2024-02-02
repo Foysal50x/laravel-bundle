@@ -2,6 +2,7 @@
 
 // config for Faisal50x/Laravel-bundle
 return [
+    'model_dir' => 'Models',
     'repository' => [
         /**
          * Define your repository directory here
