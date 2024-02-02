@@ -2,6 +2,7 @@
 
 namespace Faisal50x\LaravelBundle;
 
+use Faisal50x\LaravelBundle\Commands\RepositoryContractMakeCommand;
 use Faisal50x\LaravelBundle\Commands\RepositoryMakeCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -18,6 +19,7 @@ class LaravelBundleServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-bundle')
             ->hasConfigFile()
-            ->hasCommand(RepositoryMakeCommand::class);
+            ->hasCommand(RepositoryMakeCommand::class)
+            ->hasCommand(RepositoryContractMakeCommand::class);
     }
 }

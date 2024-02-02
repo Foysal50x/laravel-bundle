@@ -27,9 +27,18 @@ class RepositoryMakeCommand extends GeneratorCommand implements PromptsForMissin
             return self::FAILURE;
         }
 
-        //$this->createContract();
+        $this->createContract();
 
         return self::SUCCESS;
+    }
+
+    protected function getNameInput(): string
+    {
+        $name = trim($this->argument('name'));
+        if(!Str::contains($name, "Repository")) {
+            $name .="Repository";
+        }
+        return $name;
     }
 
     protected function buildClass($name): string
@@ -46,6 +55,11 @@ class RepositoryMakeCommand extends GeneratorCommand implements PromptsForMissin
     {
         $contract = Str::studly(class_basename($this->argument('name')));
         $this->info('Creating: contract for repository '.$contract);
+
+        $this->call('make:repo-contract', [
+            'name' => $this->argument('name'),
+            '--module' => $this->option('module'),
+        ]);
     }
 
     protected function getStub(): string
