@@ -16,7 +16,7 @@ trait HasModule
         $namespace = '';
         if ($this->option('module')) {
             $appDir = Str::studly($this->getModuleSrcPath());
-            $namespace = $this->resolvedModuleNamespace($this->option('module'))."\\${appDir}\\";
+            $namespace = $this->resolvedModuleNamespace($this->option('module'))."\\{$appDir}\\";
         }
 
         $namespace .= str_replace('/', '\\', trim(config('bundle.repository.dir', 'Repositories'), '/'));
