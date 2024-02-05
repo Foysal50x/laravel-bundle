@@ -19,13 +19,41 @@ composer require faisal50x/laravel-bundle
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-bundle-config"
+php artisan vendor:publish --tag="bundle-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
+// config for Faisal50x/Laravel-bundle
 return [
+    'model_dir' => 'Models',
+    'repository' => [
+        /**
+         * Define your repository directory here
+         * Default path is app/Repositories
+         */
+        'dir' => 'Repositories',
+        /**
+         * Define your repository contract path here
+         * Default path is app/Repositories/Contracts
+         */
+        'contract' => [
+            'dir' => 'Contracts',
+        ],
+        'modules' => [
+            /**
+             * module base direct
+             * default path is modules inside your project root directory
+             */
+            'base_dir' => 'modules',
+            /**
+             * Module source directory
+             * default module/app/Repositories
+             */
+            'src_dir' => 'app',
+        ],
+    ],
 ];
 ```
 
