@@ -1,11 +1,13 @@
 <?php
 
 namespace Faisal50x\LaravelBundle\Commands;
+
 use Illuminate\Foundation\Console\ModelMakeCommand as BaseModelMakeCommand;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+
 use function Laravel\Prompts\multiselect;
 
 #[AsCommand(name: 'make:module-model')]
@@ -39,8 +41,6 @@ class ModelMakeCommand extends BaseModelMakeCommand
 
     /**
      * Get the console command options.
-     *
-     * @return array
      */
     protected function getOptions(): array
     {
@@ -57,10 +57,6 @@ class ModelMakeCommand extends BaseModelMakeCommand
 
     /**
      * Interact further with the user if they were prompted for missing arguments.
-     *
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return void
      */
     protected function afterPromptingForMissingArguments(InputInterface $input, OutputInterface $output): void
     {

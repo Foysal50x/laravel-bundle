@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 trait HasModule
 {
     use ResolvedModuleNamespace;
+
     /**
      * Get the default namespace for the class.
      *

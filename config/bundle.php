@@ -15,7 +15,7 @@ return [
          */
         'contract' => [
             'dir' => 'Contracts',
-        ]
+        ],
     ],
     'modules' => [
         /**

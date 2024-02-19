@@ -10,16 +10,14 @@ trait ResolvedModuleNamespace
     {
         $rootNamespace = config('bundle.modules.root_namespace');
 
-        if(is_string($rootNamespace) && $rootNamespace !== '') {
+        if (is_string($rootNamespace) && $rootNamespace !== '') {
             return trim($rootNamespace, '\\');
         }
 
         $baseDir = config('bundle.modules.base_dir');
 
-        return trim(Str::studly(str_replace('/', '\\', $baseDir)), "\\");
+        return trim(Str::studly(str_replace('/', '\\', $baseDir)), '\\');
     }
-
-
 
     protected function qualifyModuleNamespace(string $module): string
     {
@@ -29,7 +27,7 @@ trait ResolvedModuleNamespace
 
         $rootNamespace = $this->moduleRootNamespace();
 
-        if(Str::startsWith($module, $rootNamespace)) {
+        if (Str::startsWith($module, $rootNamespace)) {
             return $module;
         }
 
@@ -38,7 +36,7 @@ trait ResolvedModuleNamespace
         );
     }
 
-    protected function getDefaultNamespace($rootNamespace):string
+    protected function getDefaultNamespace($rootNamespace): string
     {
         return $rootNamespace;
     }
