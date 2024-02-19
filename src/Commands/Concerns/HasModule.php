@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 
 trait HasModule
 {
+    use ResolvedModuleNamespace;
     /**
      * Get the default namespace for the class.
      *
@@ -14,6 +15,7 @@ trait HasModule
     protected function getDefaultNamespace($rootNamespace): string
     {
         $namespace = '';
+
         if ($this->option('module')) {
             $appDir = Str::studly($this->getModuleSrcPath());
             $namespace = $this->resolvedModuleNamespace($this->option('module'))."\\{$appDir}\\";
@@ -27,7 +29,8 @@ trait HasModule
     protected function rootNamespace(): string
     {
         if ($this->option('module')) {
-            return Str::studly($this->getModulePath());
+
+            return $this->moduleRootNamespace();
         }
 
         return parent::rootNamespace();
@@ -42,18 +45,18 @@ trait HasModule
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-        $dir = $this->option('module') ? base_path($this->getModulePath()) : $this->laravel['path'];
+        $dir = $this->option('module') ? base_path($this->getModuleBasePath()) : $this->laravel['path'];
 
         return $dir.'/'.str_replace('\\', '/', ltrim($name, '\\')).'.php';
     }
 
-    protected function getModulePath(): string
+    protected function getModuleBasePath(): string
     {
-        return trim(config('bundle.repository.modules.base_dir'), '\\');
+        return trim(config('bundle.modules.base_dir'), '\\/');
     }
 
     protected function getModuleSrcPath(): string
     {
-        return config('bundle.repository.modules.src_dir');
+        return trim(config('bundle.modules.src_dir'), '/');
     }
 }

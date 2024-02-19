@@ -15,18 +15,28 @@ return [
          */
         'contract' => [
             'dir' => 'Contracts',
+        ]
+    ],
+    'modules' => [
+        /**
+         * module base direct
+         * default path is modules inside your project root directory
+         */
+        'base_dir' => 'modules',
+        /**
+         * module root name space
+         * default is Modules
+         */
+        'root_namespace' => null,
+        /**
+         * Module source directory
+         * default module/app/Repositories
+         */
+        'src_dir' => 'app',
+        'auto_load_map' => [
+            '{{RootNamespace}}\\{{ModuleName}}\\' => '{{BaseDir}}/{{ModuleName}}/{{SrcDir}}/',
         ],
-        'modules' => [
-            /**
-             * module base direct
-             * default path is modules inside your project root directory
-             */
-            'base_dir' => 'modules',
-            /**
-             * Module source directory
-             * default module/app/Repositories
-             */
-            'src_dir' => 'app',
-        ],
+        'update_autoload_file' => true,
+        'register_module' => true,
     ],
 ];

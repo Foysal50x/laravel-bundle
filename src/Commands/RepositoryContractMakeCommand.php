@@ -24,7 +24,7 @@ class RepositoryContractMakeCommand extends GeneratorCommand
     protected function getNameInput(): string
     {
         $name = trim($this->argument('name'));
-        if (! Str::contains($name, 'Contract')) {
+        if (! Str::endsWith($name, 'Contract')) {
             $name .= 'Contract';
         }
 
